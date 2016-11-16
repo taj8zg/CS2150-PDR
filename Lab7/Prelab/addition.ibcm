@@ -1,0 +1,32 @@
+B000 000     		  nop	  		Ashley Nguyen - apn2my, PreLab07 - addition.ibcm, 3/20/16
+C00B 001     		  jmp  	  start      	moves over variables   
+0000 002     n1		  dw	  0   	     	int n1
+0000 003     n2		  dw   	  0   		int n2
+0000 004     n3		  dw   	  0   		int n3
+0000 005     total	  dw	  0		int total
+0000 006     zero	  dw	  0		
+0000 007     		  	  		space for changes
+0000 008
+0000 009
+0000 00A
+1000 00B     start	  readH	  		read first input
+4002 00C     		  store	  n1			
+1000 00D     		  readH			read second input
+4003 00E     		  store	  n2
+1000 00F     	  	  readH			read third input
+4004 010		  store   n3	
+B000 011					space for changes
+B000 012		  	
+3002 013		  load	  n1		
+5003 014		  add	  n2
+5004 015		  add	  n3
+1800 016		  printH
+D019 017		  jmpe	  xit		accum = 0 then print then xit 
+C00B 018		  jmp	  start		back to beginning 
+3002 019      xit	  load	  n1
+1800 020		  printH
+3003 021		  load	  n2
+1800 022		  printH
+3004 023		  load	  n3
+1800 024		  printH
+0000 025      	  	  halt	  		halt

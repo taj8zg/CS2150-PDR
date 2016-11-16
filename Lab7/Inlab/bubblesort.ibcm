@@ -1,0 +1,91 @@
+C010	000		jmp	iLoop		moves over variables
+0005	001	MAX	dw	5		MAX = 5 
+0000	002	zero	dw	0		
+0001	003	one	dw	1
+0000	004	temp	dw	0		temp = 0
+0000	005	curr	dw	0		curr = 0
+0000	006	prev	dw	0		prev = 0
+0000	007	i	dw	0		int i = 0
+0004	008	j	dw	4		int j = MAX - 1
+004E	009	a	dw	04E		a[]={9,12,2,4,0}	
+3000	00A	loadit	dw	3000
+4000	00B	strit	dw	4000
+B000	00C	NOP
+B000	00D	Ashley Nguyen - apn2my, inlab7 - bubblesort.ibcm, 3/22/16
+B000	00E	NOP
+B000	00F	NOP
+3001	010	iLoop	load	MAX		for(int i = 0; i < MAX; i++)
+6007	011		sub	i
+E048	012		jmpl	xit
+D048	013		jmpe	xit
+B000	014	NOP
+3008	015	jLoop	load	j		for(int j = MAX -1; j > i; j--)
+6007	016		sub	i
+E041	017		jmpl	endI		if j < i, go thru outer loop
+D041	018		jmpe	endI		if j - i = 0, go thru outer loop
+300A	019		load	loadit		load it fxn to increment thru j loop
+5009	01A		add	a
+5008	01B		add	j
+4022	01C		store	doit
+6003	01D		sub	1		
+4024	01E		store	doit2
+B000	01F	NOP
+B000	020	NOP
+B000	021	NOP
+0000	022	doit	dw	0
+4005	023		store	curr	curr = a[j]
+0000	024	doit2	dw 	0
+4006	025		store	prev	prev = a[j-1]
+3005	026		load	curr
+6006	027		sub	prev
+E02D	028		jmpl	swap	if(curr > prev) conditional: do the swap
+C03D	029		jmp	endJ	else: iterate thru jLoop 
+B000	02A	NOP
+B000	02B	NOP
+B000	02C	NOP
+300B	02D	swap	load	strit	making curr = prev
+5009	02E		add	a	increments values thru loop
+5008	02F		add	j
+6003	030		sub 	1	obtain prev value
+4033	031		store 	swapit
+3006	032		load 	prev
+0000	033	swapit	dw	0
+300B	034		load	strit	making prev = curr
+5009	035		add	a	iterate thru array elements at j
+5008	036		add	j
+6003	037		sub	1
+403C	038		store 	result
+3005	039		load 	curr
+B000	03A	NOP	
+B000	03B	NOP
+0000	03C	result	dw	0
+3008	03D	endJ	load	j
+6003	03E		sub	1	j--
+4008	03F		store	j
+C015	040		jmp	jLoop
+3007	041	endI	load 	i	
+5003	042		add	1	i++
+4007	043		store	i
+3001	044		load	max	j = MAX - 1 = 4
+6003	045		sub	1
+4008	046		store	j
+C010	047		jmp	iLoop
+0000	048	xit	halt	halt	end program
+B000	049	NOP
+B000	04A	NOP
+B000	04B	NOP
+B000	04C	NOP
+B000	04D	NOP
+0002	04E  	a[0]	dw	2		
+0004	04F	a[1]	dw	4
+0006	050	a[2]	dw	6
+0008	051	a[3]	dw	8
+0010	052	a[4]	dw	10
+B000	053	NOP	
+B000	054	NOP
+B000	055	NOP	
+B000	056	NOP
+B000	057	NOP
+B000	058	NOP
+B000	059	NOP
+B000	05A	NOP

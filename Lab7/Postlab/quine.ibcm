@@ -1,0 +1,23 @@
+3000	000	load	load		loadit			load function
+1800	001		printH		print			first line print
+5012	002	start	add		one			accum = 3001 
+4013	003		store		hold			curr=current accum value
+4005	004		store		doit			plant instruction
+0000	005	doit	0		0				
+1800	006		printH		print			print handled memory location
+3015	007		load		i			
+5012	008		add		1			i++
+4015	009		store		i			
+6014	00A		sub		numLines		while(i < size): jmp otherwise
+E00D	00B		jmpl		doit2			i < size conditional
+D00F	00C		jmpe		restart			i - size = 0 conditional
+3013	00D	doit2	load		hold			hold now has current accumulator val
+C002	00E		jmp		start			jump back to start
+3012	00F	restart	load		1			reloading i back to 1, performing iteration again
+4015	010		store		i			
+1800	011		printH		print			increments, prints at i each iteration
+0001	012		one		dw			1
+0000	013		hold		dw			current value holder
+0015	014		numLines	dw			numLines in program
+0001	015		i		dw			i = 1, default print at 000
+B000	016	Ashley Nguyen - apn2my, Postlab7 - quine.ibcm, 3/24/16

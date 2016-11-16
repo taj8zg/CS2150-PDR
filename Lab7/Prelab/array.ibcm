@@ -1,0 +1,49 @@
+B000	000		nop		Ashley Nguyen (apn2my),PreLab07-array.ibcm, 3/21/16
+C01B 	001		jmp	loop	moves over variables
+0004	002   a		dw	004	int a[]
+0005	003   size	dw	5	int size = 5
+0001	004   e0	dw	1	a[0] = 1
+0002	005   e1	dw	2	a[1] = 2
+0010	006   e2	dw	3	a[2] = 10
+0004	007   e3	dw	4	a[3] = 4
+0003	008   e4	dw	5	a[4] = 3
+0000	009   max	dw	0	max = 0
+0000	00A   i		dw	0	int i
+0001	00B   one	dw	1	
+0000	00C   zero	dw	0
+3000	00D   loadit	dw	3000
+0000	00E   current	dw	0	int current
+B000	00F   				space for changes
+B000	010	
+B000	011
+B000	012
+B000	013
+B000	014 
+B000	015    
+B000	016		
+B000	017	
+B000	018
+B000	019
+B000	01A				end space for changes
+3003	01B	loop	load	size	for( int i = 0; i < size; i++)
+600A	01C		sub	i	i < 5 case 
+E02E	01D		jmpl	xit	if size - i < 0 reach end
+D02E	01E		jmpe	xit	if size - i == 0 reach end
+300D	01F		load	loadit	form instruction to load a[i]
+5002	020		add 	a
+500A	021		add	i
+4023	022		store 	doit	plant instruction into loadit	
+0000	023	doit	dw	0
+400E	024		store	current	current = a[i]
+6009	025		sub 	max	current - max = accumulator
+E02A	026		jmpl	endloop	current < max 
+D02A	027		jmpe	endloop	current - max = 0
+300E	028		load 	current	acc = current
+4009	029		store	max	updating max's value(to accumulator/current)
+300A	02A	endloop	load	i
+500B	02B		add	one	i++
+400A	02C		store 	i
+C01B	02D		jmp	loop	jump back to run loop again
+3009	02E	xit	load	max	acc = max
+1800	02F		printH	max	print max
+0000	030		halt		halt
